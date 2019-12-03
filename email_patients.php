@@ -239,7 +239,14 @@ function emailParticipants($emailList,$emailType,$filepath,$redCAPUrl) {
 	$dataValues = array();
 	$message = "";
 	$subject = "PCORI Survey Eligibility";
-	$headers = "From: noreply@vanderbilt.edu\r\n";
+	//$headers = "From: noreply@vanderbilt.edu\r\n";
+    global $from_email;
+    if($from_email != '') {
+        $headers = "From: ".$from_email."\r\n";
+    }
+    else {
+        $headers = "From: noreply@vanderbilt.edu\r\n";
+    }
 	$headers .= 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 	# Each survey requires its own email body message. A link to the person's consent page goes between the 1 & 2 type messages.
